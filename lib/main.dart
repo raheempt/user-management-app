@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:user_management_app/views/Auth.dart';
 import 'package:user_management_app/views/loginPage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'user management app',
-  home: LoginPage(),
+  home: AuthPage  (),
     );
   }
 }
