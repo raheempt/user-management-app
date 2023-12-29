@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:user_management_app/models/logintextfiled.dart';
 import 'package:user_management_app/models/mybutto.dart';
+import 'package:user_management_app/views/SingUp.dart';
 
 class LoginPage extends StatefulWidget {
    LoginPage({super.key});
@@ -90,35 +91,41 @@ worngpassword();
               hintText: 'email',
               obscureText: false,
              ),
-            //   loginTextField(
-            //   condroller: emailcontroller,
-            //   hintText: 'email',
-            //   obscureText: false,
-            //  ),
+          
                
             loginTextField(
               condroller:Passwordcontroller ,
               hintText: 'password',
               obscureText: true,
             ),
-              SizedBox(
-                  height: 10,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal:28),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text('Forgot password?',
-                      style: TextStyle(color: Colors.grey[600]),),
-                    ],
-                  ),
-                ),
+      
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 MyButton(
                   onTap: singinuser,
+                ),
+                   Padding(
+                  padding: const EdgeInsets.symmetric(horizontal:28),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [  
+                      Text('Dont have an account?')  ,    
+                           TextButton  (
+              onPressed: () {
+                // On signup success, navigate to the next page
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SingUpPage()),
+                );
+              },
+              child: Text('Signup',
+               style: TextStyle(color: Colors.blue)
+              ),
+            ),
+                                    
+                    ],
+                  ),
                 ),
                     SizedBox(
                   height: 20,

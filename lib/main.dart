@@ -1,6 +1,8 @@
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:user_management_app/condroller/db_condroller.dart';
 import 'package:user_management_app/views/Auth.dart';
-import 'package:user_management_app/views/loginPage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
@@ -10,7 +12,11 @@ void main() async{
     options: DefaultFirebaseOptions.currentPlatform,
     
   );
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(
+      create: (context)=>StudentData())
+  ],
+  child:  const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -21,7 +27,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'user management app',
-  home: AuthPage  (),
+  home: AuthPage (),
     );
   }
 }

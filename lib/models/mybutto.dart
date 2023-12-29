@@ -14,7 +14,7 @@ class MyButton extends StatelessWidget {
         margin: EdgeInsets.symmetric(horizontal: 24 ),
         decoration: BoxDecoration(color: Colors.black,
         borderRadius: BorderRadius.circular(9)),
-        child: Center(child: Text('Sing In',
+        child: Center(child: Text('LOG IN',
         style: TextStyle(color: Colors.white,
         fontWeight: FontWeight.bold,
         fontSize: 10),),),
