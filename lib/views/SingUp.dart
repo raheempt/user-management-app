@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:user_management_app/models/logintextfiled.dart';
+import 'package:user_management_app/views/home.dart';
 
 class SingUpPage extends StatefulWidget {
   const SingUpPage({super.key});
@@ -12,6 +14,7 @@ class _SingUpPageState extends State<SingUpPage> {
   final namecontroller = TextEditingController();
   final Passwordcontroller = TextEditingController();
   final emailcontroller = TextEditingController();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,10 +79,14 @@ class _SingUpPageState extends State<SingUpPage> {
                    
                            ElevatedButton  (
               onPressed: () {
+                FirebaseAuth.instance.createUserWithEmailAndPassword(
+                  email: emailcontroller.text, 
+                  password: Passwordcontroller.text).then((value) => print('done'));
+
                 // On signup success, navigate to the next page
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SingUpPage()),
+                  MaterialPageRoute(builder: (context) =>HomePage()),
                 );
               },
               child: Text('SingUp',

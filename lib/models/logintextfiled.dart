@@ -9,7 +9,8 @@ import 'package:flutter/widgets.dart';
     super.key,
     required this.condroller,
     required this.hintText,
-    required this.obscureText,
+    required this.obscureText, 
+    // required TextEditingController controller,
   });
 
 

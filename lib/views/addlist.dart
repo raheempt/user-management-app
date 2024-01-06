@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:user_management_app/condroller/db_condroller.dart';
 import 'package:user_management_app/models/addtextfiledmodel.dart';
 import 'package:user_management_app/views/widget.dart/widget.dart';
 
@@ -10,8 +13,11 @@ class Addlist extends StatefulWidget {
 }
 
 class _AddlistState extends State<Addlist> {
+    User? currentUser = FirebaseAuth.instance.currentUser;
+
   @override
   Widget build(BuildContext context) {
+
         final nameController = TextEditingController();
     final ageController = TextEditingController();
     final contactController = TextEditingController();
@@ -37,9 +43,18 @@ sizedbox ,
                     final age = ageController.text;
                     final contact = contactController.text;
                     final email = emailController.text;
-                    // provider.addNotes(name, age, contact, email);
+                      // User? currentUser = FirebaseAuth.instance.currentUser;
+
+                            Provider.of<HomeController>(context,listen: false).addTodo(name, age, email, contact,);
+
+                                    nameController.clear();
+                                    ageController.clear();
+                                    emailController.clear();
+                                    contactController.clear();
 
                     Navigator.pop(context);
+                    Provider.of<HomeController>(context ,listen: false).addTodo(name, age, email, contact);
+
                   },
                   child: Text('Save'),
                 ),         

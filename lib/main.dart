@@ -2,8 +2,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:user_management_app/condroller/db_condroller.dart';
-import 'package:user_management_app/views/Auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:user_management_app/views/home.dart';
+import 'package:user_management_app/views/loginPage.dart';
+import 'package:user_management_app/views/update.dart';
 import 'firebase_options.dart';
 
 void main() async{
@@ -14,7 +16,7 @@ void main() async{
   );
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(
-      create: (context)=>StudentData())
+      create: (context)=> HomeController())
   ],
   child:  const MyApp()));
 }
@@ -27,7 +29,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'user management app',
-  home: AuthPage (),
+  home: LoginPage(),
+   routes: {
+          '/update': (context) => update(),
+          '/HomePage':(context)=>HomePage(),
+          '/LoginPage':(context)=>LoginPage(),
+        },
     );
   }
 }
